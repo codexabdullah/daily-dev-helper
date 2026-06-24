@@ -1,0 +1,62 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# === Distribution / packaging ===
+build/
+dist/
+*.egg-info/
+*.egg
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+MANIFEST
+
+# === Virtual environments ===
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# === Testing / coverage ===
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# === Type checking / linting caches ===
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# === Jupyter ===
+.ipynb_checkpoints/
+
+# === Environment / secrets ===
+.env
+.env.*
+*.env
+
+# === IDE / editor junk ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === OS junk ===
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === Build tooling caches ===
+.cache/
+*.log
