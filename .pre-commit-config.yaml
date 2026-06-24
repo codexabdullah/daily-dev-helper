@@ -1,0 +1,38 @@
+# Pre-commit configuration for Daily Dev Helper.
+#
+# Setup (one-time, per developer clone):
+#   pip install pre-commit
+#   pre-commit install
+#
+# From then on, every `git commit` runs these hooks automatically against the
+# staged files. To run them manually against the whole repo (e.g. in CI or
+# before opening a PR):
+#   pre-commit run --all-files
+#
+# Docs: https://pre-commit.com/
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Pin to a specific Ruff release for reproducible CI/local results.
+    # Bump deliberately with: pre-commit autoupdate --repo https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.12
+    hooks:
+      # 1. Lint first, with autofix. Must run BEFORE ruff-format: fixing lint
+      #    issues (e.g. reordering imports) can change formatting, so format
+      #    needs to see the post-fix code, not the other way around.
+      - id: ruff-check
+        name: ruff lint (with autofix)
+        args: [--fix]
+
+      # 2. Format second, once the code is lint-clean.
+      - id: ruff-format
+        name: ruff format
+
+  # A few zero-config, high-value hygiene checks that pair well with Ruff.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-toml
+      - id: check-merge-conflict

@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dev_helper"
+version = "0.1.0"
+description = "A daily developer productivity toolkit, accessible via the command line."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+    { name = "Abdullah Imran", email = "aimsoftwarestudios@gmail.com" }
+]
+
+dependencies = [
+    "click>=8.1.0",
+]
+
+[project.scripts]
+dev-helper = "dev_helper.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ---------------------------------------------------------------------------
+# Ruff: linter + formatter (replaces black, flake8, isort, and their configs)
+# Docs: https://docs.astral.sh/ruff/
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "build",
+    "dist",
+    "*.egg-info",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["dev_helper"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
